@@ -111,7 +111,6 @@
             </table>
         </center>
 
-        <script src="javascript/infoRefreshAjax.js" type="text/javascript"></script>
         <script src="javascript/vendor/jquery.min.js" type="text/javascript"></script>
         <script src="javascript/vendor/jintervals.js" type="text/javascript"></script>
         <script type="text/javascript">
