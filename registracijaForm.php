@@ -56,28 +56,28 @@ $().ready(function() {
 <? if (isset($errorMsg['blacklist'])) {?>
   <div style="border: 3px solid; border-color:#FF0000; width:380px;">
   	<?=$errorMsg['blacklist']?><br/>
-	Pieļaut reģistrāciju: <input type="checkbox" name="blacklist_pielaut" value="1" id="blacklist_pielaut" />    
+	Pieļaut reģistrāciju: <input type="checkbox" name="blacklist_pielaut" value="1" id="blacklist_pielaut" />
   </div>
 <? } ?>
 <table width="695" border="0">
   <tr>
   <td width="80" height="35">Numurs:</td>
   <td width="605">
-   <input name="numurs" type="text" class="input" size="4" maxlength="4" tabindex="1" id="numInput" style="<? (isset($error['numurs'])) ? errorMsg($error['numurs']) : ''; ?>" value="<? if(isset($_POST['numurs'])) errorMsg($_POST['numurs']); ?>" /> 
+   <input name="numurs" type="text" class="input" size="4" maxlength="4" tabindex="1" id="numInput" style="<? (isset($error['numurs'])) ? errorMsg($error['numurs']) : ''; ?>" value="<? if(isset($_POST['numurs'])) errorMsg($_POST['numurs']); ?>" />
    <? if(isset($errorMsg['numurs'])) errorMsg($errorMsg['numurs']); ?>
    </td>
  </tr>
  <tr>
   <td height="35">Dalībnieks:</td>
   <td>
-   <input name="vards" id="vards" type="text" class="input" tabindex="2" style="width:300px; <? (isset($error['vards'])) ? errorMsg($error['vards']) : ''; ?>" value="<? if(isset($_POST['vards'])) errorMsg($_POST['vards']); ?>" /> 
+   <input name="vards" id="vards" type="text" class="input" tabindex="2" style="width:300px; <? (isset($error['vards'])) ? errorMsg($error['vards']) : ''; ?>" value="<? if(isset($_POST['vards'])) errorMsg($_POST['vards']); ?>" />
    <? if(isset($errorMsg['vards'])) errorMsg($errorMsg['vards']); ?>
   </td>
  </tr>
  <tr>
   <td height="35">Dz. gads:</td>
   <td>
-   <input name="gads" id="gads" type="text" class="input" size="4" maxlength="4" tabindex="3" style="<? (isset($error['gads'])) ? errorMsg($error['gads']) : ''; ?>" value="<? if(isset($_POST['gads'])) errorMsg($_POST['gads']); ?>" /> 
+   <input name="gads" id="gads" type="text" class="input" size="4" maxlength="4" tabindex="3" style="<? (isset($error['gads'])) ? errorMsg($error['gads']) : ''; ?>" value="<? if(isset($_POST['gads'])) errorMsg($_POST['gads']); ?>" />
    <? if(isset($errorMsg['gads'])) errorMsg($errorMsg['gads']); ?>
   </td>
  </tr>
@@ -93,12 +93,12 @@ $().ready(function() {
   }
   ?>
    <fieldset style="border: 0px; height: 15px; width:150px; <? if(isset($errorMsg['dzimums'])) errorMsg($error['dzimums']); ?>">
-	<input name="dzimums" id="DzV" type="radio" value="V" tabindex="4" <?=$vCh?> /> Vīrietis
-    <input name="dzimums" id="DzS" type="radio" value="S" tabindex="5" <?=$sCh?> /> Sieviete 
+	   <label><input name="dzimums" id="DzV" type="radio" value="V" tabindex="4" <?=$vCh?> /> Vīrietis</label>
+     <label><input name="dzimums" id="DzS" type="radio" value="S" tabindex="5" <?=$sCh?> /> Sieviete </label>
    </fieldset>
     <? if(isset($errorMsg['dzimums'])) errorMsg($errorMsg['dzimums']); ?>
   </td>
- </tr> 
+ </tr>
  <tr>
   <td height="35">Velosipēds:</td>
   <td>
@@ -147,13 +147,13 @@ $().ready(function() {
  <tr>
   <td height="35"></td>
   <td>
-   <input name="registret" type="submit" class="input" tabindex="7" value="Reģistrēt" /> 
+   <input name="registret" type="submit" class="input" tabindex="7" value="Reģistrēt" />
    <input name="" type="reset" value="Atcelt" class="input" tabindex="9" />
   </td>
- </tr> 
+ </tr>
  <tr>
   <td height="29" colspan="2" valign="bottom">No šī datora reģistrētie dalībnieki: </td>
- </tr>  
+ </tr>
 </table>
    </form>
 <div class="widget_tableDiv">
@@ -182,7 +182,7 @@ $().ready(function() {
 		  <td>
 		    <a href="dzestRegistracija.php?numurs=<?=$row['Numurs']?>" onclick="javascript: if(!confirm ('Vai tiešām dzēst?')) return false;">Dzēst</a>
             <?php /*
-            / 
+            /
             <a href="labotRegistracijaForm.php?numurs=<?=$row['Numurs']?>">Labot</a>
             */
             ?>

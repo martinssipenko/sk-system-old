@@ -44,11 +44,11 @@ function findGrupa ($getGrupaGads, $getGrupaDzimums, $getGrupaVelo) {
 }
 
 function registretDalibnieku($numurs, $vards, $gads, $grupa, $dzimums, $velo, $komentars, $komanda) {
-	$query = "INSERT INTO `sistema`.`registracija` (`ID`, `Numurs`, `Vards`, `Gads`, `Grupa`, `Dzimums`, `Velo`, `Kolektivs`, `Sods`, `Komentars`, `ipReg`, `SK`) 
+	$query = "INSERT INTO `sistema`.`registracija` (`ID`, `Numurs`, `Vards`, `Gads`, `Grupa`, `Dzimums`, `Velo`, `Kolektivs`, `Sods`, `Komentars`, `ipReg`, `SK`)
 			  VALUES (NULL, '$numurs', '$vards', '$gads', '$grupa', '$dzimums', '$velo', '$komanda', '0', '$komentars', '$_SERVER[REMOTE_ADDR]', '".date("Y")."')";
-	
+
 	mysql_query($query);
 	mysql_close();
-	
+
 	header('Location: registracijaForm.php');
 }

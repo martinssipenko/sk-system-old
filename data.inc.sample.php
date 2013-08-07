@@ -4,15 +4,15 @@
 	$host = 'localhost';
 	$user = '';
 	$pass = '';
-	$dbName = '';
-	
+	$dbName = 'sistema';
+
 	/* INTERNETA SERVERA DATI */
 	$hostSrv = '';
 	$userSrv = '';
 	$passSrv = '';
 	$dbNameSrv = '';
 	/* INTERNETA SERVERA DATI */
-	
+
 //Sacensibu datums
 	$hour = 12;
 	$day = 11;
