@@ -15,10 +15,10 @@ function getsupport ( numurs )
 }
 
 -->
-</script> 
+</script>
 </head>
 
-<body> 
+<body>
 <form action="komentetajsSeeInfo.php" method="post" name="komentetajs" target="popupWin">
   <input name="numurs" type="hidden" />
 </form>
@@ -44,8 +44,10 @@ function getsupport ( numurs )
 	mysql_connect($host, $user, $pass);
 	mysql_select_db($dbName);
 	mysql_set_charset('utf8');
-	$result = mysql_query("SELECT * FROM registracija WHERE Numurs LIKE '%".$_POST['searchform']."%' OR Vards LIKE '%".$_POST['searchform']."%' OR Grupa LIKE '%".$_POST['searchform']."%' ORDER BY Finiss-Starts ASC");
-	
+
+	$term = $_POST['searchform'];
+	$result = mysql_query("SELECT * FROM registracija WHERE Numurs LIKE '%" . $term . "%' OR Vards LIKE '%" . $term . "%' OR Grupa LIKE '%" . $term . "%' ORDER BY Finiss-Starts ASC");
+
 	while($row = mysql_fetch_array($result)){
 	  if ($row['Starts'] != 0) { $starts = strTime($row['Starts']); }
 	  if ($row['Starts'] == 0) { $starts = ""; }
@@ -66,7 +68,7 @@ function getsupport ( numurs )
 		";
 	}
 	mysql_close();
-/*	
+/*
 	function strTime($s) {
 	  $d = intval($s/86400);
 	  $s -= $d*86400;
@@ -80,7 +82,7 @@ function getsupport ( numurs )
   	  return $str;
 	}
 */
-?>           
+?>
 	</tbody>
 </table>
 </div>

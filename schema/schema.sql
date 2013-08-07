@@ -3,9 +3,9 @@
 --
 
 CREATE TABLE IF NOT EXISTS `datori` (
-  `ip` varchar(15) COLLATE utf8_bin NOT NULL,
-  `dators` varchar(50) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `ip` varchar(15) COLLATE utf8_general_ci NOT NULL,
+  `dators` varchar(50) COLLATE utf8_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Table structure for table `grupas`
@@ -13,15 +13,15 @@ CREATE TABLE IF NOT EXISTS `datori` (
 
 CREATE TABLE IF NOT EXISTS `grupas` (
   `Vecums` double DEFAULT NULL,
-  `CV` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `TV` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `SV` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `CS` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `TS` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `SS` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `AKV` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  `AKS` varchar(50) COLLATE utf8_bin DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `CV` varchar(255) COLLATE utf8_general_ci DEFAULT NULL,
+  `TV` varchar(255) COLLATE utf8_general_ci DEFAULT NULL,
+  `SV` varchar(255) COLLATE utf8_general_ci DEFAULT NULL,
+  `CS` varchar(255) COLLATE utf8_general_ci DEFAULT NULL,
+  `TS` varchar(255) COLLATE utf8_general_ci DEFAULT NULL,
+  `SS` varchar(255) COLLATE utf8_general_ci DEFAULT NULL,
+  `AKV` varchar(50) COLLATE utf8_general_ci DEFAULT NULL,
+  `AKS` varchar(50) COLLATE utf8_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `grupas`
@@ -136,10 +136,10 @@ INSERT INTO `grupas` (`Vecums`, `CV`, `TV`, `SV`, `CS`, `TS`, `SS`, `AKV`, `AKS`
 
 CREATE TABLE IF NOT EXISTS `kolektivi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `kolektivs` varchar(150) COLLATE utf8_bin NOT NULL,
+  `kolektivs` varchar(150) COLLATE utf8_general_ci NOT NULL,
   `gads` year(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=26 ;
 
 --
 -- Table structure for table `registracija`
@@ -147,24 +147,24 @@ CREATE TABLE IF NOT EXISTS `kolektivi` (
 CREATE TABLE IF NOT EXISTS `registracija` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Numurs` int(3) NOT NULL,
-  `Vards` varchar(150) COLLATE utf8_bin NOT NULL,
+  `Vards` varchar(150) COLLATE utf8_general_ci NOT NULL,
   `Gads` int(4) NOT NULL,
-  `Grupa` varchar(5) COLLATE utf8_bin NOT NULL,
-  `Dzimums` varchar(2) COLLATE utf8_bin NOT NULL,
-  `Velo` varchar(5) COLLATE utf8_bin NOT NULL,
+  `Grupa` varchar(5) COLLATE utf8_general_ci NOT NULL,
+  `Dzimums` varchar(2) COLLATE utf8_general_ci NOT NULL,
+  `Velo` varchar(5) COLLATE utf8_general_ci NOT NULL,
   `Sods` int(20) DEFAULT NULL,
-  `Komentars` varchar(300) COLLATE utf8_bin DEFAULT NULL,
-  `ipReg` varchar(15) COLLATE utf8_bin DEFAULT NULL,
+  `Komentars` varchar(300) COLLATE utf8_general_ci DEFAULT NULL,
+  `ipReg` varchar(15) COLLATE utf8_general_ci DEFAULT NULL,
   `SK` int(4) NOT NULL,
   `Rezultats` int(20) DEFAULT NULL,
-  `ipStarts` varchar(15) COLLATE utf8_bin DEFAULT NULL,
-  `ipFiniss` varchar(15) COLLATE utf8_bin DEFAULT NULL,
+  `ipStarts` varchar(15) COLLATE utf8_general_ci DEFAULT NULL,
+  `ipFiniss` varchar(15) COLLATE utf8_general_ci DEFAULT NULL,
   `Starts` int(20) DEFAULT NULL,
   `Finiss` int(20) DEFAULT NULL,
   `Apgrieziens` int(20) DEFAULT NULL,
-  `Kolektivs` varchar(150) COLLATE utf8_bin DEFAULT NULL,
+  `Kolektivs` varchar(150) COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=300 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=300 ;
 
 --
 -- Structure for view `export_finiss`

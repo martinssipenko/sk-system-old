@@ -5,27 +5,27 @@
 CREATE TABLE IF NOT EXISTS `arhivs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `numurs` int(3) NOT NULL,
-  `vards` varchar(60) COLLATE utf8_latvian_ci NOT NULL,
+  `vards` varchar(60) COLLATE utf8_general_ci NOT NULL,
   `gads` int(4) NOT NULL,
-  `dzimums` varchar(3) COLLATE utf8_latvian_ci NOT NULL,
-  `velo` varchar(3) COLLATE utf8_latvian_ci NOT NULL,
-  `grupa` varchar(5) COLLATE utf8_latvian_ci NOT NULL,
+  `dzimums` varchar(3) COLLATE utf8_general_ci NOT NULL,
+  `velo` varchar(3) COLLATE utf8_general_ci NOT NULL,
+  `grupa` varchar(5) COLLATE utf8_general_ci NOT NULL,
   `starts` int(20) NOT NULL,
   `finiss` int(20) NOT NULL,
   `sods` int(20) NOT NULL,
   `rezultats` int(20) NOT NULL,
   `apgrieziens` int(20) DEFAULT NULL,
   `kolektivs` varchar(150) CHARACTER SET utf16 DEFAULT NULL,
-  `komentars` text COLLATE utf8_latvian_ci,
+  `komentars` text COLLATE utf8_general_ci,
   `sk` int(4) NOT NULL,
   `blacklist` tinyint(1) DEFAULT NULL,
-  `blacklist_reason` varchar(300) COLLATE utf8_latvian_ci DEFAULT NULL,
+  `blacklist_reason` varchar(300) COLLATE utf8_general_ci DEFAULT NULL,
   UNIQUE KEY `id` (`id`),
   KEY `vards` (`vards`),
   KEY `grupa` (`grupa`),
   KEY `sk` (`sk`),
   KEY `numurs` (`numurs`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_latvian_ci AUTO_INCREMENT=6173 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=6173 ;
 
 --
 -- Dumping data for table `arhivs`

@@ -60,9 +60,6 @@
                                 <td class="blacknav">
                                     &nbsp;
                                 </td>
-                                <td class="blacknav" width="185">
-                                    <span id="servertime"></span>
-                                </td>
                             </tr>
                         </table>
                         <table style="margin-top:2px" width="890px" border="0" cellpadding="0" cellspacing="0">
@@ -74,7 +71,28 @@
                                     &nbsp;
                                 </td>
                                 <td width="181" align="center" valign="top">
-                                    <iframe name="infoFrame" width="181" height="500" frameborder="0" src="rightInfo.php" scrolling="no" style="padding-top:5px;"></iframe>
+                                    <br/>
+                                    <table width="177" height="50" style="margin-bottom:5px;margin-top:1px;background-color:#f1f1f1;border:1px solid #c3c3c3" border="0" cellpadding="10" cellspacing="0">
+                                        <tr>
+                                            <td valign="top" align="left" width="177">
+                                                <div style="font-size:32px; text-align:center;">
+                                                    <div name="hronometrs" id="hronometrs"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table width="177" height="70" style="margin-bottom:5px;margin-top:1px;background-color:#f1f1f1;border:1px solid #c3c3c3" border="0" cellpadding="10" cellspacing="0">
+                                        <tr>
+                                            <td valign="top" align="left" width="177">
+                                                <div style="font-size:12px; line-height: 150%;">
+                                                    <div>Reģistrēti: <div id="registreti" style="display: inline;">0</div></div>
+                                                    <div>Startējuši: <div id="startejusi" style="display: inline;">0</div></div>
+                                                    <div>Finišējuši: <div id="finisejusi" style="display: inline;">0</div></div>
+                                                    <br/>
+                                                    <div id="reggrp"></div>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
                             </tr>
                         </table>
@@ -92,26 +110,50 @@
                 </tr>
             </table>
         </center>
+
+        <script src="javascript/infoRefreshAjax.js" type="text/javascript"></script>
+        <script src="javascript/vendor/jquery.min.js" type="text/javascript"></script>
+        <script src="javascript/vendor/jintervals.js" type="text/javascript"></script>
         <script type="text/javascript">
-            var currenttime = '<?php echo date("F d, Y H:i:s", time()); ?>' //PHP method of getting server date
-            var montharray=new Array("January","February","March","April","May","June","July","August","September","October","November","December")
-            var serverdate=new Date(currenttime);
+            var watchInterval;
 
-            function padlength(what){
-                var output=(what.toString().length==1)? "0"+what : what;
-                return output;
+            function update() {
+                var t = new Date().getTime();
+
+                $.ajax({
+                    url: 'rightInfoData.php',
+                    data: { t: t },
+                    dataType: 'json'
+                }).done(function(data) {
+                    clearInterval(watchInterval);
+                    var watch = data.watch;
+
+                    $('#hronometrs').html(jintervals(Math.abs(watch), "{hh}:{mm}:{ss}"));
+                    watchInterval = setInterval(function() {
+                        watch++;
+                        $('#hronometrs').html(jintervals(Math.abs(watch), "{hh}:{mm}:{ss}"));
+                    }, 1000);
+
+
+                    $('#registreti').html(data.reg);
+                    $('#startejusi').html(data.sta);
+                    $('#finisejusi').html(data.fin);
+                    $('#reggrp').html('');
+                    $.each(data.reggrp, function(index, value) {
+                        $('#reggrp').append('<div>' + index + ': ' + value + '</div>');
+                    });
+                });
             }
 
-            function displaytime(){
-                serverdate.setSeconds(serverdate.getSeconds()+1)
-                var datestring=montharray[serverdate.getMonth()]+" "+padlength(serverdate.getDate())+", "+serverdate.getFullYear()
-                var timestring=padlength(serverdate.getHours())+":"+padlength(serverdate.getMinutes())+":"+padlength(serverdate.getSeconds())
-                document.getElementById("servertime").innerHTML=datestring+" "+timestring
-            }
+            var updateInterval = setInterval(function() {
+                update();
+            }, 10000);
+            update();
 
-            window.onload=function(){
-                setInterval("displaytime()", 1000)
-            }
+            //refreshdiv_hronometrs();
+            // refreshdiv_registreti();
+            // refreshdiv_startejusi();
+            // refreshdiv_finisejusi();
 
             function clearForm() {
                 document.search.searchform.value = "";

@@ -4,50 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="styles/frame_style.css" />
 <link rel="stylesheet" type="text/css" href="styles/tabula.css" />
-<script type="text/javascript" src="javascript/tabula.js"></script>
-
-<!-- 08.08.2011 Added for autocomplete -->
-<script type="text/javascript" src="lib/jquery.js"></script>
-<script type='text/javascript' src='lib/jquery.bgiframe.min.js'></script>
-<script type='text/javascript' src='lib/jquery.ajaxQueue.js'></script>
-<script type='text/javascript' src='lib/thickbox-compressed.js'></script>
-<script type='text/javascript' src='jquery.autocomplete.js'></script>
-<link rel="stylesheet" type="text/css" href="jquery.autocomplete.css" />
-<link rel="stylesheet" type="text/css" href="lib/thickbox.css" />
-<!-- 08.08.2011 Added for autocomplete END -->
-
+<link rel="stylesheet" type="text/css" href="css/vendor/jquery.autocomplete.css" />
 <title></title>
-<script type="text/javascript">
-$().ready(function() {
-	function formatItem(row) {
-		return row[0] + " (<strong>id: " + row[1] + "</strong>)";
-	}
-
-	function formatResult(row) {
-		return row[0].replace(/(<.+?>)/gi, '');
-	}
-
-	$("#vards").autocomplete("search.php", {
-		width: 300,
-		selectFirst: false
-	});
-
-	$("#vards").result(function(event, data, formatted) {
-		if (data) {
-			$("#vards").val(data[1]);
-			$("#gads").val(data[2]);
-			if(data[3] == "V")
-				$("#DzV").attr("checked", "checked");
-			if(data[3] == "S")
-				$("#DzS").attr("checked", "checked");
-		}
-	});
-
-<? if (isset($_POST['komanda'])) { ?>
-  $("#komanda").val('<?=$_POST['komanda']?>');
-<? } ?>
-});
-</script>
 </head>
 <? include("data.inc.php"); ?>
 <? include_once("function.inc.php"); ?>
@@ -192,8 +150,42 @@ $().ready(function() {
 	</tbody>
 </table>
 </div>
+<script type="text/javascript" src="javascript/vendor/jquery.min.js"></script>
+<script type="text/javascript" src="javascript/tabula.js"></script>
+<script type='text/javascript' src='javascript/vendor/jquery.autocomplete.min.js'></script>
+
 <script type="text/javascript">
-	initTableWidget('myTable',696,165,Array('N','S','S','N',false));
+  $().ready(function() {
+    function formatItem(row) {
+      return row[0] + " (<strong>id: " + row[1] + "</strong>)";
+    }
+
+    function formatResult(row) {
+      return row[0].replace(/(<.+?>)/gi, '');
+    }
+
+    $("#vards").autocomplete("search.php", {
+      width: 300,
+      selectFirst: false
+    });
+
+    $("#vards").result(function(event, data, formatted) {
+      if (data) {
+        $("#vards").val(data[1]);
+        $("#gads").val(data[2]);
+        if(data[3] == "V")
+          $("#DzV").attr("checked", "checked");
+        if(data[3] == "S")
+          $("#DzS").attr("checked", "checked");
+      }
+    });
+
+    initTableWidget('myTable',696,165,Array('N','S','S','N',false));
+
+  <? if (isset($_POST['komanda'])) { ?>
+    $("#komanda").val('<?=$_POST['komanda']?>');
+  <? } ?>
+});
 </script>
 </body>
 </html>
