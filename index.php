@@ -127,10 +127,10 @@
                     clearInterval(watchInterval);
                     var watch = data.watch;
 
-                    $('#hronometrs').html(jintervals(Math.abs(watch), "{hh}:{mm}:{ss}"));
+                    $('#hronometrs').html(jintervals(Math.abs(watch), "{HH}:{mm}:{ss}"));
                     watchInterval = setInterval(function() {
                         watch++;
-                        $('#hronometrs').html(jintervals(Math.abs(watch), "{hh}:{mm}:{ss}"));
+                        $('#hronometrs').html(jintervals(Math.abs(watch), "{HH}:{mm}:{ss}"));
                     }, 1000);
 
 
