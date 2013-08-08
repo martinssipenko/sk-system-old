@@ -10,13 +10,13 @@
 <? include("data.inc.php"); ?>
 <? include_once("function.inc.php"); ?>
 
-<body onload="document.getElementById('numInput').focus()">  
+<body onload="document.getElementById('numInput').focus()">
 <form action="finissInsertData.php" method="post" enctype="application/x-www-form-urlencoded" name="registracija" target="mainFrame">
 <table width="695" border="0">
  <tr>
   <td width="80" height="35">Numurs:</td>
   <td width="600">
-   <input name="numurs" type="text" class="input" size="4" maxlength="4" tabindex="1" id="numInput" style="<?php echo isset($error['numurs']) ? $error['numurs'] : ''; ?>" value="<?php if(isset($_POST['numurs'])) echo $_POST['numurs']; ?>" /> 
+   <input name="numurs" type="text" class="input" size="4" maxlength="4" tabindex="1" id="numInput" style="<?php echo isset($error['numurs']) ? $error['numurs'] : ''; ?>" value="<?php if(isset($_POST['numurs'])) echo $_POST['numurs']; ?>" />
    <?php if(isset($errorMsg['numurs'])) echo $errorMsg['numurs']; ?>
    </td>
  </tr>
@@ -25,20 +25,20 @@
   <td>
    <input name="laiksH" type="text" size="3" maxlength="2" class="input" tabindex="2" style="<?php echo isset($error['laiksH']) ? $error['laiksH'] : ''; ?>" value="<?php if(isset($_POST['laiksH'])) echo $_POST['laiksH']; ?>" /> :
    <input name="laiksM" type="text" size="3" maxlength="2" class="input" tabindex="3" style="<?php echo isset($error['laiksM']) ? $error['laiksM'] : ''; ?>" value="<?php if(isset($_POST['laiksM'])) echo $_POST['laiksM']; ?>" /> :
-   <input name="laiksS" type="text" size="3" maxlength="2" class="input" tabindex="4" style="<?php echo isset($error['laiksS']) ? $error['laiksS'] : ''; ?>" value="<?php if(isset($_POST['laiksS'])) echo $_POST['laiksS']; ?>" /> 
+   <input name="laiksS" type="text" size="3" maxlength="2" class="input" tabindex="4" style="<?php echo isset($error['laiksS']) ? $error['laiksS'] : ''; ?>" value="<?php if(isset($_POST['laiksS'])) echo $_POST['laiksS']; ?>" />
    <?php if(isset($errorMsg['laiks'])) echo $errorMsg['laiks']; ?>
   </td>
  </tr>
  <tr>
   <td height="35"></td>
   <td>
-   <input name="registret" type="submit" class="input" tabindex="5" value="Saglabāt" /> 
+   <input name="registret" type="submit" class="input" tabindex="5" value="Saglabāt" />
    <input name="" type="reset" value="Atcelt" class="input" tabindex="6" />
   </td>
- </tr> 
+ </tr>
  <tr>
   <td height="29" colspan="2" valign="bottom">Finiša laiki:</td>
- </tr>  
+ </tr>
 </table>
 </form>
 <div class="widget_tableDiv">
@@ -60,8 +60,9 @@
 	mysql_connect($host, $user, $pass);
 	mysql_select_db($dbName);
 	mysql_set_charset('utf8');
-	$result = mysql_query("SELECT Numurs, Vards, Starts, Finiss, Grupa FROM registracija WHERE ipFiniss = '".$_SERVER['REMOTE_ADDR']."' AND finiss != '' ORDER BY ID DESC");
-	
+	// ipFiniss = '".$_SERVER['REMOTE_ADDR']."' AND
+	$result = mysql_query("SELECT Numurs, Vards, Starts, Finiss, Grupa FROM registracija WHERE finiss != '' ORDER BY ID DESC");
+
 	while($row = mysql_fetch_array($result)){
 	  if ($row['Starts'] != 0) { $starts = strTime($row['Starts']); }
 	  if ($row['Starts'] == 0) { $starts = ""; }
@@ -81,7 +82,7 @@
 		";
 	}
 	mysql_close();
-?>           
+?>
 	</tbody>
 </table>
 </div>

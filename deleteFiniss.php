@@ -7,9 +7,9 @@ mysql_set_charset('utf8');
 
 $numurs = $_GET['numurs'];
 
-$query = "UPDATE `registracija` SET Finiss = NULL WHERE Numurs = '$numurs';";
-	
-mysql_query($query);
+mysql_query("UPDATE `registracija` SET Finiss = NULL WHERE Numurs = '{$numurs}';");
+mysql_query("UPDATE `finiss` SET laiks=NULL WHERE numurs='{$numurs}';");
+
 mysql_close();
 
 header('Location: finissForm.php');

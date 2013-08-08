@@ -57,6 +57,12 @@
                                 <td class="blacknav" width="80px">
                                     <a class="m_item" href="komentetajsForm.php" target="mainFrame">Komentētājs</a>
                                 </td>
+                                <td class="blacknav" width="80px">
+                                    <a class="m_item" href="hronometrsForm.php" target="mainFrame">Hronometrs</a>
+                                </td>
+                                <td class="blacknav" width="90px">
+                                    <a class="m_item" href="finisaNumuriForm.php" target="mainFrame">Finiša numuri</a>
+                                </td>
                                 <td class="blacknav">
                                     &nbsp;
                                 </td>
@@ -148,11 +154,6 @@
                 update();
             }, 10000);
             update();
-
-            //refreshdiv_hronometrs();
-            // refreshdiv_registreti();
-            // refreshdiv_startejusi();
-            // refreshdiv_finisejusi();
 
             function clearForm() {
                 document.search.searchform.value = "";
