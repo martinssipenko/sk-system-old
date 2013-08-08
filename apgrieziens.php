@@ -28,3 +28,5 @@ $res = json_decode($res, true);
 foreach ($res as $key => $value) {
 	$local->query("UPDATE `registracija` SET `Apgrieziens` = '" . $value . "' WHERE `Numurs` = '" . $key . "' LIMIT 1 ;");
 }
+
+echo 'Success ' . count($res) . "\n";
