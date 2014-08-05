@@ -7,3 +7,6 @@ mysql.php
 .tags
 .tags_sorted_by_file
 phpmyadmin/
+vendor/
+composer.lock
+composer.phar
