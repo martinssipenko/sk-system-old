@@ -14,7 +14,7 @@
 		}
 	}
 	mysql_close();
-    
+
     header("Content-type: application/csv");
     header("Content-Disposition: attachment; filename=diplomi.csv");
     header("Pragma: no-cache");

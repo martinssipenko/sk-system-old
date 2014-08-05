@@ -10,7 +10,7 @@
 function getsupport ( numurs )
 {
   document.komentetajs.numurs.value = numurs ;
-  window.open("komentetajsSeeInfo.php", "popupWin", "height = 450 ,width = 800, location = 0, status = 0, resizable = 0, scrollbars=0, toolbar = 0");
+  window.open("komentetajsSeeInfo.php", "popupWin", "height = 500 ,width = 800, location = 0, status = 0, resizable = 0, scrollbars=0, toolbar = 0");
   document.komentetajs.submit() ;
 }
 

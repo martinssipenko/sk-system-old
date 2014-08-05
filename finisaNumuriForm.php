@@ -53,7 +53,7 @@
 
 							?>
 								<form action="finisaNumuriInsertData.php" method="post" enctype="application/x-www-form-urlencoded" target="mainFrame">
-									<input type="hidden" name="laiks_id" value="<?php echo $row['id']; ?>">
+									<input type="hidden" name="laiks_id" value="<?php echo $row['ID']; ?>">
 									<input type="hidden" name="laiks" value="<?php echo $row['laiks']; ?>">
 									<tr>
 										<td width="50">

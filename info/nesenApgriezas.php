@@ -33,11 +33,11 @@
 	mysql_connect($host, $user, $pass);
 	mysql_select_db($dbName);
 	mysql_set_charset('utf8');
-	
-	$query = "SELECT Numurs, Vards, Starts, Apgrieziens, Grupa, Gads, Komentars FROM registracija WHERE Apgrieziens != '' AND Starts != '' ORDER BY Apgrieziens DESC LIMIT 0,30";
-		
+
+	$query = "SELECT Numurs, Vards, Starts, Apgrieziens, Velo, Dzimums, Gads, Komentars FROM registracija WHERE Apgrieziens != '' AND Starts != '' ORDER BY Apgrieziens DESC LIMIT 0,30";
+
 	$result = mysql_query($query);
-	
+
 	while($row = mysql_fetch_array($result)){
 	  $starts = strTime($row['Starts']);
   	  $apgrieziens = strTime($row['Apgrieziens']);
@@ -47,7 +47,7 @@
 			<td>".$row['Numurs']."</td>
 			<td>".$row['Vards']."</td>
 			<td>".$row['Gads']."</td>
-			<td>".$row['Grupa']."</td>
+			<td>".findGrupa($row['Gads'], $row['Dzimums'], $row['Velo'])."</td>
 			<td>".$starts."</td>
 			<td>".$apgrieziens."</td>
 			<td><b>".$rezultats."</b></td>
@@ -56,7 +56,7 @@
 		";
 	}
 	mysql_close();
-?>           
+?>
 	</tbody>
 </table>
 </center>

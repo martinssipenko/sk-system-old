@@ -13,12 +13,10 @@ while($row = $result->fetch_assoc()) {
     $data[$row['Numurs']] = $row['Starts'];
 }
 
-$data = json_encode($data);
-
 $client = new jsonRPCClient('http://skunenieki.lv/5km/rpc.php');
 
 try {
-    $res = $client->apgrieziens($data);
+    $res = $client->apgrieziens(json_encode($data));
 } catch (Exception $e) {
     echo nl2br($e->getMessage()).'<br />'."\n";
 }
@@ -29,4 +27,4 @@ foreach ($res as $key => $value) {
 	$local->query("UPDATE `registracija` SET `Apgrieziens` = '" . $value . "' WHERE `Numurs` = '" . $key . "' LIMIT 1 ;");
 }
 
-echo 'Success ' . count($res) . "\n";
+error_log('Success sent '. count($data) . ', received ' . count($res));

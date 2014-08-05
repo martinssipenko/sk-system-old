@@ -61,7 +61,7 @@
 	mysql_select_db($dbName);
 	mysql_set_charset('utf8');
 	// ipFiniss = '".$_SERVER['REMOTE_ADDR']."' AND
-	$result = mysql_query("SELECT Numurs, Vards, Starts, Finiss, Grupa FROM registracija WHERE finiss != '' ORDER BY ID DESC");
+	$result = mysql_query("SELECT Numurs, Vards, Starts, Finiss, Gads, Dzimums, Velo FROM registracija WHERE finiss != '' ORDER BY ID DESC");
 
 	while($row = mysql_fetch_array($result)){
 	  if ($row['Starts'] != 0) { $starts = strTime($row['Starts']); }
@@ -72,7 +72,7 @@
 		echo "
 		  <tr>
 			<td>".$row['Numurs']."</td>
-			<td>".$row['Grupa']."</td>
+			<td>".findGrupa($row['Gads'], $row['Dzimums'], $row['Velo'])."</td>
 			<td>".$row['Vards']."</td>
 			<td>".$starts."</td>
 			<td>".$finiss."</td>

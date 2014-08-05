@@ -7,8 +7,10 @@
 <link rel="stylesheet" type="text/css" href="css/vendor/jquery.autocomplete.css" />
 <title></title>
 </head>
-<? include("data.inc.php"); ?>
-<? include_once("function.inc.php"); ?>
+<?php
+  require_once 'data.inc.php';
+  require_once 'function.inc.php';
+?>
 <body onload="document.getElementById('numInput').focus()">
 <form action="registracijaInsertData.php" method="post" enctype="application/x-www-form-urlencoded" name="registracija" target="mainFrame" autocomplete="off">
 <? if (isset($errorMsg['blacklist'])) {?>
@@ -130,11 +132,11 @@
 	mysql_connect($host, $user, $pass);
 	mysql_select_db($dbName);
 	mysql_set_charset('utf8');
-	$result = mysql_query("SELECT Numurs, Vards, Gads, Grupa FROM registracija WHERE ipReg = '".$_SERVER['REMOTE_ADDR']."' ORDER BY id DESC");
+	$result = mysql_query("SELECT Numurs, Vards, Gads, Dzimums, Velo FROM registracija WHERE ipReg = '".$_SERVER['REMOTE_ADDR']."' ORDER BY id DESC");
 	while($row = mysql_fetch_array($result)){ ?>
 		<tr>
 		  <td><?=$row['Numurs']?></td>
-		  <td><b><?=$row['Grupa']?></b></td>
+		  <td><b><?=findGrupa($row['Gads'], $row['Dzimums'], $row['Velo'])?></b></td>
 		  <td><?=$row['Vards']?></td>
 		  <td><?=$row['Gads']?></td>
 		  <td>

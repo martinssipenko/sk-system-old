@@ -24,7 +24,7 @@
 	mysql_select_db($dbName);
 	mysql_set_charset('utf8');
 	$result = mysql_query("SELECT Numurs, Vards, Starts, Finiss, Grupa, Gads, Komentars FROM registracija WHERE Starts != '' AND Finiss != '' AND Dzimums = 'V' ORDER BY Finiss-Starts ASC LIMIT 0,3");
-	
+
 	while($row = mysql_fetch_array($result)){
 	  if ($row['Starts'] != 0) { $starts = strTime($row['Starts']); }
 	  if ($row['Starts'] == 0) { $starts = ""; }
@@ -45,7 +45,7 @@
 		";
 	}
 	mysql_close();
-?>           
+?>
 	</tbody>
 </table>
 <br />
@@ -71,7 +71,7 @@
 	mysql_select_db($dbName);
 	mysql_set_charset('utf8');
 	$result = mysql_query("SELECT Numurs, Vards, Starts, Finiss, Grupa, Gads, Komentars FROM registracija WHERE Starts != '' AND Finiss != '' AND Dzimums = 'S' ORDER BY Finiss-Starts ASC LIMIT 0,3");
-	
+
 	while($row = mysql_fetch_array($result)){
 	  if ($row['Starts'] != 0) { $starts = strTime($row['Starts']); }
 	  if ($row['Starts'] == 0) { $starts = ""; }
@@ -92,7 +92,7 @@
 		";
 	}
 	mysql_close();
-?>           
+?>
 	</tbody>
 </table>
 <br />
@@ -142,6 +142,6 @@
 		}
 	}
 	mysql_close();
-?>           
+?>
 	</tbody>
 </table>

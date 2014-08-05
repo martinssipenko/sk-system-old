@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 
-$csvFile = new Keboola\Csv\CsvFile(__DIR__ . '/data.csv');
+$csvFile = new Keboola\Csv\CsvFile(__DIR__ . '/data_2012.csv');
 $i = 0;
 
 echo "INSERT INTO `arhivs` (`id`, `numurs`, `vards`, `gads`, `dzimums`, `velo`, `grupa`, `starts`, `finiss`, `sods`, `rezultats`, `apgrieziens`, `kolektivs`, `komentars`, `sk`, `blacklist`, `blacklist_reason`) VALUES";

@@ -57,7 +57,7 @@
 		}
 	}
 	mysql_close();
-?>           
+?>
 	</tbody>
 </table>
 </center>

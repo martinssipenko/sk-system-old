@@ -5,7 +5,7 @@
 	mysql_connect($host, $user, $pass);
 	mysql_select_db($dbName);
 	mysql_set_charset('utf8');
-	
+
 	$result = mysql_query("SELECT Vards, Gads, Dzimums FROM registracija WHERE Numurs = '$_POST[numurs]'");
 	$getInfo = mysql_fetch_row($result);
 	$gads[0] = $getInfo[1] - 2;
@@ -41,8 +41,8 @@
 	</thead>
 	<tbody class="scrollingContent">
 <?php
-    $sql = "SELECT Vards, Finiss-Starts AS Rezultats, Grupa, Komentars, Dzimums, SK FROM registracija WHERE gads BETWEEN '$gads[0]' AND '$gads[1]' UNION 
-            SELECT Vards, Rezultats, Grupa, Komentars, Dzimums, SK FROM arhivs WHERE Dzimums = '$getInfo[2]' AND gads BETWEEN '$gads[0]' AND '$gads[1]' ORDER BY sk DESC";
+    $sql = "SELECT Vards, Finiss-Starts AS Rezultats, Grupa, Komentars, Dzimums, SK FROM registracija WHERE gads BETWEEN '$gads[0]' AND '$gads[1]' UNION
+            SELECT Vards, Finiss-Starts AS Rezultats, Grupa, Komentars, Dzimums, SK FROM arhivs WHERE Dzimums = '$getInfo[2]' AND gads BETWEEN '$gads[0]' AND '$gads[1]' ORDER BY sk DESC";
 
 	$result = mysql_query($sql);
 
@@ -63,17 +63,17 @@
 	  }
 	}
 	mysql_close();
-	
+
 	function vieta($laiks, $grupa, $dzimums, $skGads, $kur) {
 	  if ($laiks) {
 			if ($kur == "VG") {
-			$result_d = mysql_query("SELECT Finiss-Starts AS Rezultats FROM registracija WHERE SK = '$skGads' AND Grupa = '$grupa' UNION 
-								     SELECT Rezultats FROM arhivs WHERE SK = '$skGads' AND Grupa = '$grupa' ORDER BY Rezultats ASC");
+			$result_d = mysql_query("SELECT Finiss-Starts AS Rezultats FROM registracija WHERE SK = '$skGads' AND Grupa = '$grupa' UNION
+								     SELECT Finiss-Starts AS Rezultats FROM arhivs WHERE SK = '$skGads' AND Grupa = '$grupa' ORDER BY Rezultats ASC");
 			}
-			
+
 			if ($kur == "VK") {
-			$result_d = mysql_query("SELECT Finiss-Starts AS Rezultats FROM registracija WHERE SK = '$skGads' AND Dzimums = '$dzimums' UNION 
-								     SELECT Rezultats FROM arhivs WHERE SK = '$skGads' AND Dzimums = '$dzimums' ORDER BY Rezultats ASC");
+			$result_d = mysql_query("SELECT Finiss-Starts AS Rezultats FROM registracija WHERE SK = '$skGads' AND Dzimums = '$dzimums' UNION
+								     SELECT Finiss-Starts AS Rezultats FROM arhivs WHERE SK = '$skGads' AND Dzimums = '$dzimums' ORDER BY Rezultats ASC");
 			}
 			$x = 1;
 			while ($row_d = mysql_fetch_array($result_d)) {
@@ -85,13 +85,13 @@
 	  if (!$laiks) { $key = " "; }
 		return $key;
 	}
-	
-?>           
+
+?>
 	</tbody>
 </table>
 </div>
 <script type="text/javascript">
-initTableWidget('myTable',796,350,Array('N',false,'N','N','N', 'N', false));
+initTableWidget('myTable',796,400,Array('N',false,'N','N','N', 'N', false));
 </script>
 </center>
 <p>

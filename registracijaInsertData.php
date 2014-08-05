@@ -35,17 +35,9 @@ if (isset($dataOk)) {
 	registretDalibnieku($data['numurs'], $data['vards'], $data['gads'], $grupa, $data['dzimums'], $velo, $komentars, $komanda);
 }
 
-function findGrupa ($getGrupaGads, $getGrupaDzimums, $getGrupaVelo) {
-	$vecums = date("Y") - $getGrupaGads;
-	$kolonna = $getGrupaVelo . $getGrupaDzimums;
-	$result = mysql_query("SELECT $kolonna FROM grupas WHERE Vecums = '$vecums'");
-	$grupaGet = mysql_fetch_row($result);
-	return $grupaGet[0];
-}
-
 function registretDalibnieku($numurs, $vards, $gads, $grupa, $dzimums, $velo, $komentars, $komanda) {
-	$query = "INSERT INTO `sistema`.`registracija` (`ID`, `Numurs`, `Vards`, `Gads`, `Grupa`, `Dzimums`, `Velo`, `Kolektivs`, `Sods`, `Komentars`, `ipReg`, `SK`)
-			  VALUES (NULL, '$numurs', '$vards', '$gads', '$grupa', '$dzimums', '$velo', '$komanda', '0', '$komentars', '$_SERVER[REMOTE_ADDR]', '".date("Y")."')";
+	$query = "INSERT INTO `sistema`.`registracija` (`ID`, `Numurs`, `Vards`, `Grupa`, `Gads`, `Dzimums`, `Velo`, `Kolektivs`, `Sods`, `Komentars`, `ipReg`, `SK`)
+			  VALUES (NULL, '$numurs', '$vards', '$grupa', '$gads', '$dzimums', '$velo', '$komanda', '0', '$komentars', '$_SERVER[REMOTE_ADDR]', '".date("Y")."')";
 
 	mysql_query($query);
 	mysql_close();

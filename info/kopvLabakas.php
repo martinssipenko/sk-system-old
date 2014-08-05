@@ -33,11 +33,11 @@
 	mysql_connect($host, $user, $pass);
 	mysql_select_db($dbName);
 	mysql_set_charset('utf8');
-	
-	$query = "SELECT Numurs, Vards, Starts, Finiss, Rezultats, Grupa, Gads, Komentars FROM registracija WHERE Starts != '' AND Finiss != '' AND Dzimums = 'S' ORDER BY Finiss-Starts ASC LIMIT 0,30";
-		
+
+	$query = "SELECT Numurs, Vards, Starts, Finiss, Rezultats, Gads, Velo, Dzimums, Komentars FROM registracija WHERE Starts != '' AND Finiss != '' AND Dzimums = 'S' ORDER BY Finiss-Starts ASC LIMIT 0,30";
+
 	$result = mysql_query($query);
-	
+
 	while($row = mysql_fetch_array($result)){
 	  if ($row['Starts'] != 0) { $starts = strTime($row['Starts']); }
 	  if ($row['Starts'] == 0) { $starts = ""; }
@@ -49,7 +49,7 @@
 			<td>".$row['Numurs']."</td>
 			<td>".$row['Vards']."</td>
 			<td>".$row['Gads']."</td>
-			<td>".$row['Grupa']."</td>
+			<td>".findGrupa($row['Gads'], $row['Dzimums'], $row['Velo'])."</td>
 			<td>".$starts."</td>
 			<td>".$finiss."</td>
 			<td><b>".$rezultats."</b></td>
@@ -58,7 +58,7 @@
 		";
 	}
 	mysql_close();
-?>           
+?>
 	</tbody>
 </table>
 </center>
