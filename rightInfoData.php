@@ -20,7 +20,7 @@ $registrejusies = mysql_num_rows($result);
 $result = mysql_query("SELECT ID FROM `registracija` WHERE Starts != '0'", $link);
 $startejusi = mysql_num_rows($result);
 
-$result = mysql_query("SELECT ID FROM `registracija` WHERE Finiss != '0'", $link);
+$result = mysql_query("SELECT ID FROM `registracija` WHERE Finiss IS NOT NULL", $link);
 $finisejusi = mysql_num_rows($result);
 
 $reggrp= array();

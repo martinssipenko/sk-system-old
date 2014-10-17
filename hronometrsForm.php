@@ -46,7 +46,7 @@ require_once 'function.inc.php';
 							echo "
 							  <tr>
 								<td>" . $laiks . "</td>
-								<td><a href=\"deleteHronometrs.php?id=".$row['id']."\" onclick=\"javascript: if(!confirm ('Vai tiešām dzēst šo finiša laiku?')) return false;\">Dzēst</a></td>
+								<td><a href=\"deleteHronometrs.php?id=".$row['ID']."\" onclick=\"javascript: if(!confirm ('Vai tiešām dzēst šo finiša laiku?')) return false;\">Dzēst</a></td>
 							  </tr>
 							";
 						}
