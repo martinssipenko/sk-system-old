@@ -7,8 +7,8 @@
 <script type="text/javascript" src="javascript/tabula.js"></script>
 <title></title>
 </head>
-<? include("data.inc.php"); ?>
-<? include_once("function.inc.php"); ?>
+<?phpinclude("data.inc.php"); ?>
+<?phpinclude_once("function.inc.php"); ?>
 
 <body onload="document.getElementById('numInput').focus()">
 <form action="finissInsertData.php" method="post" enctype="application/x-www-form-urlencoded" name="registracija" target="mainFrame">

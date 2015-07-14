@@ -13,32 +13,32 @@
 ?>
 <body onload="document.getElementById('numInput').focus()">
 <form action="registracijaInsertData.php" method="post" enctype="application/x-www-form-urlencoded" name="registracija" target="mainFrame" autocomplete="off">
-<? if (isset($errorMsg['blacklist'])) {?>
+<?php if (isset($errorMsg['blacklist'])) {?>
   <div style="border: 3px solid; border-color:#FF0000; width:380px;">
   	<?=$errorMsg['blacklist']?><br/>
 	Pieļaut reģistrāciju: <input type="checkbox" name="blacklist_pielaut" value="1" id="blacklist_pielaut" />
   </div>
-<? } ?>
+<?php } ?>
 <table width="695" border="0">
   <tr>
   <td width="80" height="35">Numurs:</td>
   <td width="605">
-   <input name="numurs" type="text" class="input" size="4" maxlength="4" tabindex="1" id="numInput" style="<? (isset($error['numurs'])) ? errorMsg($error['numurs']) : ''; ?>" value="<? if(isset($_POST['numurs'])) errorMsg($_POST['numurs']); ?>" />
-   <? if(isset($errorMsg['numurs'])) errorMsg($errorMsg['numurs']); ?>
+   <input name="numurs" type="text" class="input" size="4" maxlength="4" tabindex="1" id="numInput" style="<?php (isset($error['numurs'])) ? errorMsg($error['numurs']) : ''; ?>" value="<?php if(isset($_POST['numurs'])) errorMsg($_POST['numurs']); ?>" />
+   <?php if(isset($errorMsg['numurs'])) errorMsg($errorMsg['numurs']); ?>
    </td>
  </tr>
  <tr>
   <td height="35">Dalībnieks:</td>
   <td>
-   <input name="vards" id="vards" type="text" class="input" tabindex="2" style="width:300px; <? (isset($error['vards'])) ? errorMsg($error['vards']) : ''; ?>" value="<? if(isset($_POST['vards'])) errorMsg($_POST['vards']); ?>" />
-   <? if(isset($errorMsg['vards'])) errorMsg($errorMsg['vards']); ?>
+   <input name="vards" id="vards" type="text" class="input" tabindex="2" style="width:300px; <?php (isset($error['vards'])) ? errorMsg($error['vards']) : ''; ?>" value="<?php if(isset($_POST['vards'])) errorMsg($_POST['vards']); ?>" />
+   <?php if(isset($errorMsg['vards'])) errorMsg($errorMsg['vards']); ?>
   </td>
  </tr>
  <tr>
   <td height="35">Dz. gads:</td>
   <td>
-   <input name="gads" id="gads" type="text" class="input" size="4" maxlength="4" tabindex="3" style="<? (isset($error['gads'])) ? errorMsg($error['gads']) : ''; ?>" value="<? if(isset($_POST['gads'])) errorMsg($_POST['gads']); ?>" />
-   <? if(isset($errorMsg['gads'])) errorMsg($errorMsg['gads']); ?>
+   <input name="gads" id="gads" type="text" class="input" size="4" maxlength="4" tabindex="3" style="<?php (isset($error['gads'])) ? errorMsg($error['gads']) : ''; ?>" value="<?php if(isset($_POST['gads'])) errorMsg($_POST['gads']); ?>" />
+   <?php if(isset($errorMsg['gads'])) errorMsg($errorMsg['gads']); ?>
   </td>
  </tr>
  <tr>
@@ -52,11 +52,11 @@
 	  if ($_POST['dzimums'] == "S") { $sCh = "checked=\"checked\""; }
   }
   ?>
-   <fieldset style="border: 0px; height: 15px; width:150px; <? if(isset($errorMsg['dzimums'])) errorMsg($error['dzimums']); ?>">
+   <fieldset style="border: 0px; height: 15px; width:150px; <?php if(isset($errorMsg['dzimums'])) errorMsg($error['dzimums']); ?>">
 	   <label><input name="dzimums" id="DzV" type="radio" value="V" tabindex="4" <?=$vCh?> /> Vīrietis</label>
      <label><input name="dzimums" id="DzS" type="radio" value="S" tabindex="5" <?=$sCh?> /> Sieviete </label>
    </fieldset>
-    <? if(isset($errorMsg['dzimums'])) errorMsg($errorMsg['dzimums']); ?>
+    <?php if(isset($errorMsg['dzimums'])) errorMsg($errorMsg['dzimums']); ?>
   </td>
  </tr>
  <tr>
@@ -85,7 +85,7 @@
  <tr>
   <td height="35">Komentārs:</td>
   <td>
-   <input name="komentars" type="text" class="input" style="width:300px;" tabindex="8" value="<? if(isset($_POST['komentars'])) errorMsg($_POST['komentars']); ?>" />
+   <input name="komentars" type="text" class="input" style="width:300px;" tabindex="8" value="<?php if(isset($_POST['komentars'])) errorMsg($_POST['komentars']); ?>" />
   </td>
  </tr>
  <tr>
@@ -93,14 +93,14 @@
   <td>
     <select name="komanda" id="komanda" class="input" tabindex="7">
     <option value=""></option>
-  <?
+  <?php
   	mysql_connect($host, $user, $pass);
 	mysql_select_db($dbName);
 	mysql_set_charset('utf8');
 	$result = mysql_query("SELECT Id, kolektivs FROM kolektivi WHERE gads = '".$year."' ORDER BY id");
 	while($row = mysql_fetch_array($result)){ ?>
      <option value="<?=$row['kolektivs']?>"><?=$row['kolektivs']?></option>
-  <? } ?>
+  <?php } ?>
     </select>
   </td>
  </tr>
@@ -184,9 +184,9 @@
 
     initTableWidget('myTable',696,165,Array('N','S','S','N',false));
 
-  <? if (isset($_POST['komanda'])) { ?>
+  <?php if (isset($_POST['komanda'])) { ?>
     $("#komanda").val('<?=$_POST['komanda']?>');
-  <? } ?>
+  <?php } ?>
 });
 </script>
 </body>

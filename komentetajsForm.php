@@ -23,12 +23,12 @@ function clearForm() {
 }
 
 -->
-</script> 
+</script>
 </head>
 
-<? include_once("data.inc.php"); ?>
-<? include_once("function.inc.php"); ?>
-<body> 
+<?phpinclude_once("data.inc.php"); ?>
+<?phpinclude_once("function.inc.php"); ?>
+<body>
 <p>
 <form action="komentetajsSeeInfo.php" method="post" enctype="application/x-www-form-urlencoded" name="komentetajs" target="popupWin" onsubmit="return openWindow();">
 <table width="695" border="0">
@@ -36,7 +36,7 @@ function clearForm() {
   <td width="80" height="35">Numurs:</td>
   <td width="600">
    <input name="numurs" type="text" class="input" size="4" maxlength="4" tabindex="1" id="numInput" onFocus="clearForm()" />
-   <input style="margin:0px" type="image" align="middle" src="images/submit_invisible.gif" /> 
+   <input style="margin:0px" type="image" align="middle" src="images/submit_invisible.gif" />
    </td>
  </tr>
 </table>

@@ -1,4 +1,4 @@
-<?
+<?php
 
 function errorMsg($message) {
   if (!isset($message)) {
